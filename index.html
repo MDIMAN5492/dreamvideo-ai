@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DreamVideo AI - AI Video & Content Creation</title>
+    <title>DreamVideo AI - AI Video Generator & Showcase</title>
     <style>
         * {
             box-sizing: border-box;
@@ -14,99 +14,241 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #0b0f19;
             color: #f3f4f6;
-            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
         }
-        header {
-            background: linear-gradient(135deg, #1e1b4b, #312e81);
-            padding: 60px 20px;
-            text-align: center;
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 240px;
+            background-color: #111827;
+            padding: 20px;
+            border-right: 1px solid #1f2937;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
-        header h1 {
-            font-size: 2.8rem;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
             color: #38bdf8;
-            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        header p {
-            font-size: 1.2rem;
-            color: #cbd5e1;
-            max-width: 600px;
-            margin: 0 auto 20px;
+        .menu-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
-        .cta-btn {
-            display: inline-block;
-            background: #25D366;
-            color: #fff;
-            padding: 12px 28px;
-            border-radius: 30px;
+        .menu-item a {
+            color: #9ca3af;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: block;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+        .menu-item.active a, .menu-item a:hover {
+            background-color: #1f2937;
+            color: #38bdf8;
+        }
+
+        /* Main Dashboard Content */
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .header-title h1 {
+            font-size: 2rem;
+            color: #ffffff;
+        }
+        .header-title p {
+            color: #9ca3af;
+            font-size: 0.95rem;
+        }
+        .wa-btn {
+            background-color: #25D366;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
-            transition: 0.3s;
+            font-size: 0.9rem;
             box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            transition: 0.3s;
         }
-        .cta-btn:hover {
-            background: #128C7E;
-            transform: translateY(-2px);
+        .wa-btn:hover {
+            background-color: #128C7E;
         }
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
+
+        /* Video Showcase Grid */
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #e5e7eb;
         }
-        .services {
+        .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
-            margin-top: 30px;
         }
-        .card {
-            background: #1e293b;
-            padding: 25px;
+        .video-card {
+            background-color: #1f2937;
             border-radius: 12px;
-            border: 1px solid #334155;
+            overflow: hidden;
+            border: 1px solid #374151;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .video-card iframe {
+            width: 100%;
+            height: 380px;
+            border: none;
+        }
+        .card-body {
+            padding: 15px;
             text-align: center;
         }
-        .card h3 {
-            color: #38bdf8;
+        .card-title {
+            font-size: 1rem;
+            color: #f3f4f6;
             margin-bottom: 10px;
         }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #0f172a;
-            color: #64748b;
-            margin-top: 50px;
+        .order-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #0284c7, #4f46e5);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .order-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #1f2937;
+            }
+            .main-content {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>DreamVideo AI</h1>
-        <p>Ami AI diye high-quality short videos, reels & promotional content toiri kori. Apnar business o channel-er jonno ajkei order korun!</p>
-        <a href="https://wa.me/966532475690?text=Hello%20DreamVideo%20AI,%20ami%20apnar%20service%20samparke%20jante%20cai" target="_blank" class="cta-btn">WhatsApp-e Jogajog Korun</a>
-    </header>
-
-    <div class="container">
-        <h2 style="text-align: center; color: #f8fafc;">Amar Services</h2>
-        <div class="services">
-            <div class="card">
-                <h3>AI Shorts & Reels</h3>
-                <p>Viral TikTok, Instagram Reels, o YouTube Shorts video creation.</p>
-            </div>
-            <div class="card">
-                <h3>AI Voiceover & Script</h3>
-                <p>Realistic AI voice o engaging content script toiri.</p>
-            </div>
-            <div class="card">
-                <h3>Business Promo Video</h3>
-                <p>Apnar business ba product-er jonno professional AI promo video.</p>
-            </div>
-        </div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">⚡ DreamVideo AI</div>
+        <ul class="menu-list">
+            <li class="menu-item active"><a href="#">Dashboard</a></li>
+            <li class="menu-item"><a href="#">All Demo Videos</a></li>
+            <li class="menu-item"><a href="#">AI Services</a></li>
+            <li class="menu-item"><a href="https://wa.me/966532475690" target="_blank">Contact Us</a></li>
+        </ul>
     </div>
 
-    <footer>
-        <p>&copy; 2026 DreamVideo AI. All rights reserved.</p>
-    </footer>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="header-bar">
+            <div class="header-title">
+                <h1>AI Video Showcase</h1>
+                <p>Transform your ideas into stunning AI videos with DreamVideo AI</p>
+            </div>
+            <a href="https://wa.me/966532475690?text=Hello%20DreamVideo%20AI,%20ami%20apnar%20service%20samparke%20jante%20cai" target="_blank" class="wa-btn">Order via WhatsApp</a>
+        </div>
+
+        <h2 class="section-title">Your Demo Videos</h2>
+
+        <div class="grid-container">
+
+            <!-- Video 1 -->
+            <div class="video-card">
+                <iframe src="https://www.instagram.com/reel/DewvoMet3i_/embed" allowtransparency="true" allowfullscreen="true"></iframe>
+                <div class="card-body">
+                    <div class="card-title">AI Concept Video #1</div>
+                    <a href="https://wa.me/966532475690?text=Ami%20Video%201%20er%20moto%20AI%20video%20banate%20cai" target="_blank" class="order-btn">Order Similar Video</a>
+                </div>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="video-card">
+                <iframe src="https://www.instagram.com/reel/DeuIyUSN-_6/embed" allowtransparency="true" allowfullscreen="true"></iframe>
+                <div class="card-body">
+                    <div class="card-title">AI Concept Video #2</div>
+                    <a href="https://wa.me/966532475690?text=Ami%20Video%202%20er%20moto%20AI%20video%20banate%20cai" target="_blank" class="order-btn">Order Similar Video</a>
+                </div>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="video-card">
+                <iframe src="https://www.instagram.com/reel/DeuHYirxXeC/embed" allowtransparency="true" allowfullscreen="true"></iframe>
+                <div class="card-body">
+                    <div class="card-title">AI Concept Video #3</div>
+                    <a href="https://wa.me/966532475690?text=Ami%20Video%203%20er%20moto%20AI%20video%20banate%20cai" target="_blank" class="order-btn">Order Similar Video</a>
+                </div>
+            </div>
+
+            <!-- Video 4 -->
+            <div class="video-card">
+                <iframe src="https://www.instagram.com/reel/Det-jx7x3Z-/embed" allowtransparency="true" allowfullscreen="true"></iframe>
+                <div class="card-body">
+                    <div class="card-title">AI Concept Video #4</div>
+                    <a href="https://wa.me/966532475690?text=Ami%20Video%204%20er%20moto%20AI%20video%20banate%20cai" target="_blank" class="order-btn">Order Similar Video</a>
+                </div>
+            </div>
+
+            <!-- Video 5 -->
+            <div class="video-card">
+                <iframe src="https://www.instagram.com/reel/DertnhzRYMY/embed" allowtransparency="true" allowfullscreen="true"></iframe>
+                <div class="card-body">
+                    <div class="card-title">AI Concept Video #5</div>
+                    <a href="https://wa.me/966532475690?text=Ami%20Video%205%20er%20moto%20AI%20video%20banate%20cai" target="_blank" class="order-btn">Order Similar Video</a>
+                </div>
+            </div>
+
+            <!-- Video 6 -->
+            <div class="video-card">
+                <iframe src="https://www.instagram.com/reel/DersK60xWn1/embed" allowtransparency="true" allowfullscreen="true"></iframe>
+                <div class="card-body">
+                    <div class="card-title">AI Concept Video #6</div>
+                    <a href="https://wa.me/966532475690?text=Ami%20Video%206%20er%20moto%20AI%20video%20banate%20cai" target="_blank" class="order-btn">Order Similar Video</a>
+                </div>
+            </div>
+
+            <!-- Video 7 -->
+            <div class="video-card">
+                <iframe src="https://www.instagram.com/reel/DepL7ZsRlaN/embed" allowtransparency="true" allowfullscreen="true"></iframe>
+                <div class="card-body">
+                    <div class="card-title">AI Concept Video #7</div>
+                    <a href="https://wa.me/966532475690?text=Ami%20Video%207%20er%20moto%20AI%20video%20banate%20cai" target="_blank" class="order-btn">Order Similar Video</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 </body>
 </html>
