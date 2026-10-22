@@ -3,252 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DreamVideo AI - AI Video Generator & Showcase</title>
+    <title>DreamVideo AI - Home & Prompt Feed</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0b0f19;
-            color: #f3f4f6;
-            display: flex;
-            min-height: 100vh;
-        }
-        /* Sidebar Navigation */
-        .sidebar {
-            width: 240px;
-            background-color: #111827;
-            padding: 20px;
-            border-right: 1px solid #1f2937;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #38bdf8;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .menu-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .menu-item a {
-            color: #9ca3af;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            display: block;
-            font-size: 0.95rem;
-            transition: 0.3s;
-        }
-        .menu-item.active a, .menu-item a:hover {
-            background-color: #1f2937;
-            color: #38bdf8;
-        }
-
-        /* Main Dashboard Content */
-        .main-content {
-            flex: 1;
-            padding: 30px;
-            overflow-y: auto;
-        }
-        .header-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        .header-title h1 {
-            font-size: 2rem;
+            background-color: #000000;
             color: #ffffff;
+            padding: 15px;
+            max-width: 600px;
+            margin: 0 auto;
         }
-        .header-title p {
-            color: #9ca3af;
-            font-size: 0.95rem;
+        
+        /* Top Bar */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0 15px;
         }
-        .wa-btn {
-            background-color: #25D366;
-            color: white;
-            padding: 10px 22px;
-            border-radius: 25px;
+        .top-nav h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .upgrade-btn {
+            background-color: #eab308;
+            color: #000000;
+            padding: 6px 14px;
+            border-radius: 20px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-            transition: 0.3s;
-        }
-        .wa-btn:hover {
-            background-color: #128C7E;
+            font-size: 0.85rem;
         }
 
-        /* Video Showcase Grid */
-        .section-title {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: #e5e7eb;
-        }
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        .video-card {
-            background-color: #1f2937;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #374151;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .video-card iframe {
-            width: 100%;
-            height: 380px;
-            border: none;
-        }
-        .card-body {
+        /* Create / Post Section Card */
+        .post-box {
+            background-color: #18181b;
+            border: 1px solid #27272a;
+            border-radius: 16px;
             padding: 15px;
-            text-align: center;
+            margin-bottom: 20px;
         }
-        .card-title {
-            font-size: 1rem;
-            color: #f3f4f6;
+        .post-box h3 {
+            font-size: 0.95rem;
+            color: #eab308;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .post-input, .post-textarea {
+            width: 100%;
+            background-color: #09090b;
+            border: 1px solid #3f3f46;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
             margin-bottom: 10px;
         }
-        .order-btn {
+        .post-textarea {
+            resize: vertical;
+            height: 60px;
+        }
+        .post-submit-btn {
+            width: 100%;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        /* Featured Higgsfield Style Banner */
+        .featured-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(24,24,27,1) 100%);
+            border-radius: 18px;
+            padding: 18px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .featured-card .tag {
+            background: #2563eb;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 10px;
             display: inline-block;
-            background: linear-gradient(90deg, #0284c7, #4f46e5);
+            font-size: 0.75rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .featured-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+        .featured-card p {
+            color: #a1a1aa;
+            font-size: 0.8rem;
+        }
+
+        /* Feed List */
+        .section-title {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .feed-container {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-bottom: 80px;
+        }
+        .feed-card {
+            background-color: #18181b;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #27272a;
+        }
+        .feed-media {
+            width: 100%;
+            max-height: 380px;
+            object-fit: cover;
+            display: block;
+        }
+        .feed-content {
+            padding: 14px;
+        }
+        .feed-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+        .prompt-box {
+            background-color: #09090b;
+            border: 1px dashed #3f3f46;
+            padding: 10px;
+            border-radius: 8px;
+            color: #a1a1aa;
+            font-size: 0.8rem;
+            line-height: 1.4;
+            margin-bottom: 12px;
+            font-family: monospace;
+            word-break: break-word;
+        }
+        .order-btn {
+            display: block;
+            text-align: center;
+            background-color: #25D366;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        /* Floating Bottom Nav */
+        .bottom-bar {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 30px);
+            max-width: 570px;
+            background-color: #18181b;
+            border: 1px solid #27272a;
+            padding: 10px 18px;
+            border-radius: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+        }
+        .wa-action-btn {
+            background-color: #25D366;
             color: white;
             padding: 8px 16px;
             border-radius: 20px;
             text-decoration: none;
             font-size: 0.85rem;
             font-weight: bold;
-            transition: 0.3s;
-        }
-        .order-btn:hover {
-            opacity: 0.9;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
-            .sidebar {
-                width: 100%;
-                border-right: none;
-                border-bottom: 1px solid #1f2937;
-            }
-            .main-content {
-                padding: 15px;
-            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <div class="logo">⚡ DreamVideo AI</div>
-        <ul class="menu-list">
-            <li class="menu-item active"><a href="#">Dashboard</a></li>
-            <li class="menu-item"><a href="#">All Demo Videos</a></li>
-            <li class="menu-item"><a href="#">AI Services</a></li>
-            <li class="menu-item"><a href="https://wa.me/966532475690" target="_blank">Contact Us</a></li>
-        </ul>
+    <!-- Header -->
+    <div class="top-nav">
+        <h2>Explore</h2>
+        <a href="https://wa.me/966532475690?text=Hello%20DreamVideo%20AI" class="upgrade-btn">⚡ Upgrade</a>
     </div>
 
-    <!-- Main Content -->
-    <div class="main-content">
-        <div class="header-bar">
-            <div class="header-title">
-                <h1>AI Video Showcase</h1>
-                <p>Transform your ideas into stunning AI videos with DreamVideo AI</p>
-            </div>
-            <a href="https://wa.me/966532475690?text=Hello%20DreamVideo%20AI,%20ami%20apnar%20service%20samparke%20jante%20cai" target="_blank" class="wa-btn">Order via WhatsApp</a>
-        </div>
-
-        <h2 class="section-title">Your Demo Videos</h2>
-
-        <div class="grid-container">
-
-            <!-- Video 1 -->
-            <div class="video-card">
-                <iframe src="https://www.instagram.com/reel/DewvoMet3i_/embed" allowtransparency="true" allowfullscreen="true"></iframe>
-                <div class="card-body">
-                    <div class="card-title">AI Concept Video #1</div>
-                    <a href="https://wa.me/966532475690?text=Ami%20Video%201%20er%20moto%20AI%20video%20banate%20cai" target="_blank" class="order-btn">Order Similar Video</a>
-                </div>
-            </div>
-
-            <!-- Video 2 -->
-            <div class="video-card">
-                <iframe src="https://www.instagram.com/reel/DeuIyUSN-_6/embed" allowtransparency="true" allowfullscreen="true"></iframe>
-                <div class="card-body">
-                    <div class="card-title">AI Concept Video #2</div>
-                    <a href="https://wa.me/966532475690?text=Ami%20Video%202%20er%20moto%20AI%20video%20banate%20cai" target="_blank" class="order-btn">Order Similar Video</a>
-                </div>
-            </div>
-
-            <!-- Video 3 -->
-            <div class="video-card">
-                <iframe src="https://www.instagram.com/reel/DeuHYirxXeC/embed" allowtransparency="true" allowfullscreen="true"></iframe>
-                <div class="card-body">
-                    <div class="card-title">AI Concept Video #3</div>
-                    <a href="https://wa.me/966532475690?text=Ami%20Video%203%20er%20moto%20AI%20video%20banate%20cai" target="_blank" class="order-btn">Order Similar Video</a>
-                </div>
-            </div>
-
-            <!-- Video 4 -->
-            <div class="video-card">
-                <iframe src="https://www.instagram.com/reel/Det-jx7x3Z-/embed" allowtransparency="true" allowfullscreen="true"></iframe>
-                <div class="card-body">
-                    <div class="card-title">AI Concept Video #4</div>
-                    <a href="https://wa.me/966532475690?text=Ami%20Video%204%20er%20moto%20AI%20video%20banate%20cai" target="_blank" class="order-btn">Order Similar Video</a>
-                </div>
-            </div>
-
-            <!-- Video 5 -->
-            <div class="video-card">
-                <iframe src="https://www.instagram.com/reel/DertnhzRYMY/embed" allowtransparency="true" allowfullscreen="true"></iframe>
-                <div class="card-body">
-                    <div class="card-title">AI Concept Video #5</div>
-                    <a href="https://wa.me/966532475690?text=Ami%20Video%205%20er%20moto%20AI%20video%20banate%20cai" target="_blank" class="order-btn">Order Similar Video</a>
-                </div>
-            </div>
-
-            <!-- Video 6 -->
-            <div class="video-card">
-                <iframe src="https://www.instagram.com/reel/DersK60xWn1/embed" allowtransparency="true" allowfullscreen="true"></iframe>
-                <div class="card-body">
-                    <div class="card-title">AI Concept Video #6</div>
-                    <a href="https://wa.me/966532475690?text=Ami%20Video%206%20er%20moto%20AI%20video%20banate%20cai" target="_blank" class="order-btn">Order Similar Video</a>
-                </div>
-            </div>
-
-            <!-- Video 7 -->
-            <div class="video-card">
-                <iframe src="https://www.instagram.com/reel/DepL7ZsRlaN/embed" allowtransparency="true" allowfullscreen="true"></iframe>
-                <div class="card-body">
-                    <div class="card-title">AI Concept Video #7</div>
-                    <a href="https://wa.me/966532475690?text=Ami%20Video%207%20er%20moto%20AI%20video%20banate%20cai" target="_blank" class="order-btn">Order Similar Video</a>
-                </div>
-            </div>
-
-        </div>
+    <!-- Create / Post Option -->
+    <div class="post-box">
+        <h3>✨ Add New Post & Prompt</h3>
+        <input type="text" id="postTitle" class="post-input" placeholder="Title (e.g. Cyberpunk Character)">
+        <input type="text" id="postMedia" class="post-input" placeholder="Image / Video Link (URL)">
+        <textarea id="postPrompt" class="post-textarea" placeholder="Enter AI Prompt here..."></textarea>
+        <button onclick="addNewPost()" class="post-submit-btn">Publish Post 🚀</button>
     </div>
+
+    <!-- Higgsfield Style Banner -->
+    <div class="featured-card">
+        <div class="tag">HIGGSFIELD GENJUTSU LITE</div>
+        <h3>Create AI Video Presets</h3>
+        <p>Pick any preset below to order direct on WhatsApp with auto-prompt!</p>
+    </div>
+
+    <div class="section-title">Community Presets</div>
+
+    <!-- Feed List -->
+    <div class="feed-container" id="feedContainer">
+
+        <!-- Card 1 -->
+        <div class="feed-card">
+            <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600" class="feed-media" alt="Preset 1">
+            <div class="feed-content">
+                <div class="feed-title">Urban Fashion AI</div>
+                <div class="prompt-box">PROMPT: Cinematic video of a stylish model walking in neon city streets, 4k resolution, hyperrealistic motion --ar 9:16</div>
+                <a href="https://wa.me/966532475690?text=Hello,%20ami%20ei%20video%20ta%20banate%20cai:%20[Urban%20Fashion%20AI]%20-%20PROMPT:%20Cinematic%20video%20of%20a%20stylish%20model%20walking%20in%20neon%20city%20streets" class="order-btn">Order This Prompt (WhatsApp)</a>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="feed-card">
+            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600" class="feed-media" alt="Preset 2">
+            <div class="feed-content">
+                <div class="feed-title">Cinematic Sports Action</div>
+                <div class="prompt-box">PROMPT: Dynamic slow-motion video of a football player dribbling past defenders, stadium lights, 8k quality --ar 9:16</div>
+                <a href="https://wa.me/966532475690?text=Hello,%20ami%20ei%20video%20ta%20banate%20cai:%20[Cinematic%20Sports]%20-%20PROMPT:%20Dynamic%20slow-motion%20video%20of%20a%20football%20player" class="order-btn">Order This Prompt (WhatsApp)</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bottom Floating Bar -->
+    <div class="bottom-bar">
+        <span>DreamVideo AI</span>
+        <a href="https://wa.me/966532475690?text=Hello%20DreamVideo%20AI,%20ami%20custom%20prompt%20diye%20video%20banate%20cai" class="wa-action-btn">WhatsApp Order</a>
+    </div>
+
+    <script>
+        function addNewPost() {
+            const title = document.getElementById('postTitle').value;
+            const media = document.getElementById('postMedia').value || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600';
+            const prompt = document.getElementById('postPrompt').value;
+
+            if (!title || !prompt) {
+                alert('Doya kore Title ebong Prompt duiti-i likhun!');
+                return;
+            }
+
+            const feedContainer = document.getElementById('feedContainer');
+            const encodedPrompt = encodeURIComponent(prompt);
+            const encodedTitle = encodeURIComponent(title);
+
+            const newCard = document.createElement('div');
+            newCard.className = 'feed-card';
+            newCard.innerHTML = `
+                <img src="${media}" class="feed-media" alt="${title}" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600'">
+                <div class="feed-content">
+                    <div class="feed-title">${title}</div>
+                    <div class="prompt-box">PROMPT: ${prompt}</div>
+                    <a href="https://wa.me/966532475690?text=Hello,%20ami%20ei%20video%20ta%20banate%20cai:%20[${encodedTitle}]%20-%20PROMPT:%20${encodedPrompt}" class="order-btn">Order This Prompt (WhatsApp)</a>
+                </div>
+            `;
+
+            feedContainer.prepend(newCard);
+
+            // Clear inputs
+            document.getElementById('postTitle').value = '';
+            document.getElementById('postMedia').value = '';
+            document.getElementById('postPrompt').value = '';
+
+            alert('Post safolvabe add hoyeche!');
+        }
+    </script>
 
 </body>
 </html>
